@@ -18,7 +18,7 @@ const BOGGLE_DICE = [
   "HLNNRZ"
 ];
 
-// Shuffle the order of 16 dices
+// Shuffle the order of 16 dices (Fisher-Yates Shuffle)
     // Iterate from last index, swap with random previous index
 function shuffle(arr){
     for (let i=arr.length-1; i>0; i--){
@@ -29,3 +29,13 @@ function shuffle(arr){
     }
     return arr;
 }
+
+// Roll each dice to get its top face
+    // Shallow copy of Boggle dice
+const dice = [...BOGGLE_DICE];
+shuffle(dice);
+
+const rolledLetters = dice.map(die => {
+    const randomIndex= Math.floor(Math.random() * dice.length);
+    return die[randomIndex];
+})
