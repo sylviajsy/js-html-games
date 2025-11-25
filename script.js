@@ -31,11 +31,28 @@ function shuffle(arr){
 }
 
 // Roll each dice to get its top face
-    // Shallow copy of Boggle dice
-const dice = [...BOGGLE_DICE];
-shuffle(dice);
+function generateBoard(){
+        // Shallow copy of Boggle dice
+    const dice = [...BOGGLE_DICE];
+    shuffle(dice);
 
-const rolledLetters = dice.map(die => {
-    const randomIndex= Math.floor(Math.random() * dice.length);
-    return die[randomIndex];
-})
+    const rolledLetters = dice.map(die => {
+        const randomIndex= Math.floor(Math.random() * die.length);
+        return die[randomIndex];
+    })
+
+    // put rolled Letter to 4*4 Board
+    const board = [];
+    let index = 0;
+
+    for (let r=0; r<4; r++){
+        const row = [];
+        for (let c=0; c<4; c++){
+            row.push(rolledLetters[index]);
+            index ++;
+        }
+        board.push(row);
+    }
+
+    return board;
+}
