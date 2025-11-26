@@ -32,7 +32,7 @@ function shuffle(arr){
 
 // Roll each dice to get its top face
 function generateBoard(){
-        // Shallow copy of Boggle dice
+    // Shallow copy of Boggle dice
     const dice = [...BOGGLE_DICE];
     shuffle(dice);
 
@@ -56,3 +56,31 @@ function generateBoard(){
 
     return board;
 }
+
+// Render Board
+function renderBoard(board){
+    const boardContainer = document.getElementById("board");
+    boardContainer.innerHTML = "";
+
+    for (let r=0; r<4; r++){
+        for (let c=0; c<4; c++){
+            const letter = board[r][c];
+
+            const button = document.createElement("button");
+            button.innerText = letter;
+
+            // Use toggle, color changed back if has bg color
+            button.addEventListener('click', (e) => {
+                button.classList.toggle("clicked");
+            })
+
+            boardContainer.appendChild(button);
+        }
+    }
+}
+
+// Board appers when page loads
+document.addEventListener("DOMContentLoaded", () => {
+  board = generateBoard();
+  renderBoard(board);
+});
