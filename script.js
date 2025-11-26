@@ -81,6 +81,6 @@ function renderBoard(board){
 
 // Board appers when page loads
 document.addEventListener("DOMContentLoaded", () => {
-  board = generateBoard();
+  const board = generateBoard();
   renderBoard(board);
 });
