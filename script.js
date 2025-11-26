@@ -57,8 +57,16 @@ function generateBoard(){
     return board;
 }
 
+// Check if two clicks are neighbors
+function isNeighbor(r1, c1, r2, c2) {
+    const rowDiff = Math.abs(r1 - r2);
+    const colDiff = Math.abs(c1 - c2);
+    return rowDiff <= 1 && colDiff <= 1;
+}
+
 // Render Board
 function renderBoard(board){
+    let path = [];
     const boardContainer = document.getElementById("board");
     boardContainer.innerHTML = "";
 
@@ -71,6 +79,14 @@ function renderBoard(board){
 
             // Use toggle, color changed back if has bg color
             button.addEventListener('click', (e) => {
+                if (path.length > 0) {
+                    const lastDie = path[path.length - 1];
+                    if (!isNeighbor(lastDie.r, lastDie.c, r, c)) {
+                        alert("Not adjacent!");
+                        return;
+                    }
+                }
+                path.push({ r: r, c: c, letter: letter });
                 button.classList.toggle("clicked");
             })
 
