@@ -79,6 +79,20 @@ function renderBoard(board){
 
             // Use toggle, color changed back if has bg color
             button.addEventListener('click', (e) => {
+                // Only last selected letter could be cancelled
+                if (button.classList.contains("clicked")){
+                    const lastSelected = path[path.length-1];
+
+                    if (lastSelected.r==r && lastSelected.c==c){
+                        path.pop();
+                        button.classList.remove("clicked");
+                    } else {
+                        alert("Only the last selected letter can be unselected")
+                    }
+                    return;
+                }
+
+                // Check if selected letter is adjecent to last letter
                 if (path.length > 0) {
                     const lastDie = path[path.length - 1];
                     if (!isNeighbor(lastDie.r, lastDie.c, r, c)) {
