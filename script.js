@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBoard(board);
 
   document.getElementById("submitBtn").addEventListener("click", ()=>{
+    // A valid word must contain at least 3 letters
     if (path.length<3){
         alert("A valid word must contain at least 3 letters");
         return;
@@ -129,6 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const newListItem = document.createElement("li");
     newListItem.innerText = word;
     wordList.appendChild(newListItem);
+
+    // Reset selected letters
+    path = [];
+    document.querySelectorAll(".clicked").forEach(btn => {
+        btn.classList.remove("clicked");
+    });
   });
 });
 
