@@ -64,9 +64,10 @@ function isNeighbor(r1, c1, r2, c2) {
     return rowDiff <= 1 && colDiff <= 1;
 }
 
+let path = [];
+
 // Render Board
 function renderBoard(board){
-    let path = [];
     const boardContainer = document.getElementById("board");
     boardContainer.innerHTML = "";
 
@@ -113,4 +114,22 @@ function renderBoard(board){
 document.addEventListener("DOMContentLoaded", () => {
   const board = generateBoard();
   renderBoard(board);
+
+  document.getElementById("submitBtn").addEventListener("click", ()=>{
+    if (path.length<3){
+        alert("A valid word must contain at least 3 letters");
+        return;
+    } 
+
+    const word = path.map(p => p.letter).join("");
+    // Check for repeated word
+
+    // Add word to Word List
+    const wordList = document.getElementById("wordList");
+    const newListItem = document.createElement("li");
+    newListItem.innerText = word;
+    wordList.appendChild(newListItem);
+  });
 });
+
+
