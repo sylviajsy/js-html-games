@@ -110,10 +110,30 @@ function renderBoard(board){
     }
 }
 
+
+// calculate score
+function getScore(word){
+    let score = 0;
+    if (word.length <=4){
+        score = 1;
+    } else if (word.length == 5){
+        score = 2;
+    } else if (word.length == 6){
+        score = 3;
+    } else if (word.length ==7){
+        score = 5;
+    } else {
+        score = 11;
+    }
+    return score;
+}
+
 // Board appers when page loads
 document.addEventListener("DOMContentLoaded", () => {
   const board = generateBoard();
   renderBoard(board);
+
+  let totalScore = 0;
 
   document.getElementById("submitBtn").addEventListener("click", ()=>{
     // A valid word must contain at least 3 letters
@@ -148,6 +168,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".clicked").forEach(btn => {
         btn.classList.remove("clicked");
     });
+
+    // get score
+    const score = getScore(word);
+    totalScore += score;
+    document.getElementById("scoreValue").innerText = totalScore;
   });
 });
 
