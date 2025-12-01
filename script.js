@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.remove("clicked");
     });
 
-    // get score
+    // Get score
     const score = getScore(word);
     totalScore += score;
     document.getElementById("scoreValue").innerText = totalScore;
