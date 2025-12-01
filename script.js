@@ -60,7 +60,7 @@ function generateBoard(){
 // Set timer
 let timeLeft = 180;
 let timeInterval;
-
+let timerStarted = false;
 
 function startTimer() { 
     timerInterval = setInterval(()=>{
@@ -104,7 +104,11 @@ function renderBoard(board){
 
             // Use toggle, color changed back if has bg color
             button.addEventListener('click', (e) => {
-                startTimer();
+                if (!timerStarted){
+                    startTimer();
+                    timerStarted = true;
+                }
+                
                 // Only last selected letter could be cancelled
                 if (button.classList.contains("clicked")){
                     const lastSelected = path[path.length-1];
