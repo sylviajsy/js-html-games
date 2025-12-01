@@ -21,7 +21,7 @@ const BOGGLE_DICE = [
 // Load Dictionary
 async function loadDictionary(){
     try{
-        const response = await fetch('dictionary-yawl.txt');
+        const response = await fetch('./dictionary-yawl.txt');
         const text = await response.text();
         const words = text.split('\n').map(w => w.trim().toUpperCase());
         GameState.dictionary = new Set(words);
@@ -186,6 +186,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = generateBoard();
   renderBoard(board);
 
+  loadDictionary();
+
   document.getElementById("submitBtn").addEventListener("click", ()=>{
     // A valid word must contain at least 3 letters
     if (GameState.selectedPath.length<3){
@@ -194,6 +196,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
 
     const word = GameState.selectedPath.map(p => p.letter).join("");
+    // Check if the word in dictionary
+    if (GameState.dictionary.has(word)){
+        alert("This is not an English word!");
+
+        GameState.selectedPath = [];
+        document.querySelectorAll(".clicked").forEach(btn => btn.classList.remove("clicked"));
+        return;
+    }
     // Check for repeated word
     if (GameState.foundWords.has(word)) {
         alert("You already found this word!");
