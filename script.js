@@ -18,6 +18,19 @@ const BOGGLE_DICE = [
   "HLNNRZ"
 ];
 
+// Load Dictionary
+async function loadDictionary(){
+    try{
+        const response = await fetch('dictionary-yawl.txt');
+        const text = await response.text();
+        const words = text.split('\n').map(w => w.trim().toUpperCase());
+        GameState.dictionary = new Set(words);
+        console.log("Dictionary successfully loaded with ${GameState.dictionary.size} words");
+    }catch(error){
+    console.error("Dictionary fail to load", error);
+    }
+}
+
 let totalGameTime = 180;
 // State Object
 const GameState = {
@@ -27,7 +40,8 @@ const GameState = {
     timerInterval: null,
     board: [],
     selectedPath: [],
-    foundWords: new Set()
+    foundWords: new Set(),
+    dictionary: new Set()
 };
 
 // Shuffle the order of 16 dices (Fisher-Yates Shuffle)
