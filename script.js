@@ -73,7 +73,7 @@ function generateBoard(){
 // Set timer
 function startTimer() { 
 
-    GameState.timerStarted = true;
+    GameState.isTimerActive = true;
 
     GameState.timerInterval = setInterval(()=>{
         GameState.timeLeft--;
@@ -84,7 +84,7 @@ function startTimer() {
 
         document.getElementById("timeValue").innerText = `${minutes}:${seconds}`;
 
-        if (GameState.GameState.timeLeft <=0){
+        if (GameState.timeLeft <=0){
             clearInterval(GameState.timerInterval);
             document.getElementById("submitBtn").disabled = true;
             document.querySelectorAll("#board button").forEach(btn => btn.disabled = true);
@@ -134,7 +134,7 @@ function renderBoard(board){
 
                 // Check if selected letter is adjecent to last letter
                 if (GameState.selectedPath.length > 0) {
-                    const lastDie = GameState.selectedPath[pGameState.selectedPath.length - 1];
+                    const lastDie = GameState.selectedPath[GameState.selectedPath.length - 1];
                     if (!isNeighbor(lastDie.r, lastDie.c, r, c)) {
                         alert("Not adjacent!");
                         return;
@@ -181,17 +181,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const word = GameState.selectedPath.map(p => p.letter).join("");
     // Check for repeated word
-    const existingWord = document.querySelectorAll("#wordList li");
+    if (GameState.foundWords.has(word)) {
+        alert("You already found this word!");
 
-    for (let i of existingWord){
-        if (i.innerText == word){
-            alert("You already found this word!");
-            GameState.selectedPath = [];
-            document.querySelectorAll(".clicked").forEach(btn => {
-                btn.classList.remove("clicked");
-            });
-            return;
-        }
+        GameState.selectedPath = [];
+        document.querySelectorAll(".clicked").forEach(btn => btn.classList.remove("clicked"));
+        return;
     }
 
     // Add word to Word List
@@ -199,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const newListItem = document.createElement("li");
     newListItem.innerText = word;
     wordList.appendChild(newListItem);
+    GameState.foundWords.add(word);
 
     // Reset selected letters
     GameState.selectedPath = [];
