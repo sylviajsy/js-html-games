@@ -57,6 +57,30 @@ function generateBoard(){
     return board;
 }
 
+// Set timer
+let timeLeft = 180;
+let timeInterval;
+
+
+function startTimer() { 
+    timerInterval = setInterval(()=>{
+        timeLeft--;
+
+        const minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        if (seconds < 10) seconds = "0" + seconds;
+
+        document.getElementById("timeValue").innerText = `${minutes}:${seconds}`;
+
+        if (timeLeft <=0){
+            clearInterval(timerInterval);
+            document.getElementById("submitBtn").disabled = true;
+            document.querySelectorAll("#board button").forEach(btn => btn.disabled = true);
+        }
+    }, 1000);
+
+}
+
 // Check if two clicks are neighbors
 function isNeighbor(r1, c1, r2, c2) {
     const rowDiff = Math.abs(r1 - r2);
@@ -80,6 +104,7 @@ function renderBoard(board){
 
             // Use toggle, color changed back if has bg color
             button.addEventListener('click', (e) => {
+                startTimer();
                 // Only last selected letter could be cancelled
                 if (button.classList.contains("clicked")){
                     const lastSelected = path[path.length-1];
