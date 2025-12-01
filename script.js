@@ -124,6 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const word = path.map(p => p.letter).join("");
     // Check for repeated word
+    const existingWord = document.querySelectorAll("#wordList li");
+
+    for (let i of existingWord){
+        if (i.innerText == word){
+            alert("You already found this word!");
+            path = [];
+            document.querySelectorAll(".clicked").forEach(btn => {
+                btn.classList.remove("clicked");
+            });
+            return;
+        }
+    }
 
     // Add word to Word List
     const wordList = document.getElementById("wordList");
