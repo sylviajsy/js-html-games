@@ -25,17 +25,17 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 18px;
-    opacity: 0;
+    display: none;
 }
 
 #message-box.error {
     background-color: red;
     color: white;
-    opacity: 1；
+    display: block;
 }
 
 #message-box.success{
     background-color: green;
     color: white;
-    opacity: 1;
+    display: block;
 }
