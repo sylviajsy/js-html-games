@@ -231,6 +231,15 @@ document.addEventListener("DOMContentLoaded", () => {
     GameState.score += score;
     document.getElementById("scoreValue").innerText = GameState.score;
   });
+  
+  // Reset Button 
+  document.getElementById("resetBtn").addEventListener("click",()=>{
+    resetSelection();
+  })
 });
 
-
+// Reset Button logic
+function resetSelection(){
+    GameState.selectedPath = [];
+    document.querySelectorAll(".clicked").forEach(btn => btn.classList.remove("clicked"));
+}
