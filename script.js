@@ -102,7 +102,17 @@ function startTimer() {
             clearInterval(GameState.timerInterval);
             document.getElementById("submitBtn").disabled = true;
             document.querySelectorAll("#board button").forEach(btn => btn.disabled = true);
-            alert("Time is up!");
+            
+            // async function: After timeLeft = 0 + 100ms, pop up playAgain screen
+            setTimeout(() => {
+                const playAgain = confirm(`Time is up!\nYour Final Score: ${GameState.score}\n\n
+                    Do you want to play again?`);
+
+                if (playAgain) {
+                    resetGame();
+                }
+
+            }, 100);
         }
     }, 1000);
 
@@ -141,7 +151,7 @@ function renderBoard(board){
                         GameState.selectedPath.pop();
                         button.classList.remove("clicked");
                     } else {
-                        alert("Only the last selected letter can be unselected")
+                        showMessage("error", "Only the last selected letter can be unselected");
                     }
                     return;
                 }
@@ -150,7 +160,7 @@ function renderBoard(board){
                 if (GameState.selectedPath.length > 0) {
                     const lastDie = GameState.selectedPath[GameState.selectedPath.length - 1];
                     if (!isNeighbor(lastDie.r, lastDie.c, r, c)) {
-                        alert("Not adjacent!");
+                        showMessage("error", "Not adjacent!");
                         return;
                     }
                 }
@@ -191,21 +201,21 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("submitBtn").addEventListener("click", ()=>{
     // A valid word must contain at least 3 letters
     if (GameState.selectedPath.length<3){
-        alert("A valid word must contain at least 3 letters");
+        showMessage("error", "A valid word must contain at least 3 letters");
         return;
     } 
 
     const word = GameState.selectedPath.map(p => p.letter).join("");
     // Check if the word in dictionary
     if (!GameState.dictionary.has(word)){
-        alert("This is not an English word!");
+        showMessage("error", "This is not an English word!");
 
         resetSelection();
         return;
     }
     // Check for repeated word
     if (GameState.foundWords.has(word)) {
-        alert("You already found this word!");
+        showMessage("error", "You already found this word!");
 
         resetSelection();
         return;
@@ -257,4 +267,23 @@ function resetGame(){
 
     const board = generateBoard();
     renderBoard(board);
+}
+
+function showMessage(type, text){
+    const msgBox = document.getElementById("message-box");
+
+    msgBox.innerText = text;
+
+    msgBox.className = "";
+
+    if (type ==="success"){
+        msgBox.classList.add("success");
+    } else {
+        msgBox.classList.add("error");
+    }
+
+    setTimeout(() => {
+        msgBox.className = "";
+        msgBox.innerText = "";
+    }, 2000);
 }

@@ -15,3 +15,27 @@
     justify-content: center;
     align-items: center;  
 }
+
+.message-box {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    opacity: 0;
+}
+
+#message-box.error {
+    background-color: red;
+    color: white;
+    opacity: 1；
+}
+
+#message-box.success{
+    background-color: green;
+    color: white;
+    opacity: 1;
+}
