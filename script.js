@@ -241,6 +241,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("resetBtn").addEventListener("click",()=>{
     resetSelection();
   })
+
+  showCurrentTime();
 });
 
 // Reset Button logic
@@ -286,4 +288,24 @@ function showMessage(type, text){
         msgBox.className = "";
         msgBox.innerText = "";
     }, 2000);
+}
+
+function showCurrentTime(){
+    setInterval(() => {
+        const timeNow = Date.now();
+
+        const nowDate = new Date();
+        nowDate.setTime(timeNow);
+
+        const year = nowDate.getFullYear();
+        const month = nowDate.getMonth();
+        const day = nowDate.getDate();
+        const hours = nowDate.getHours();
+        const minutes = nowDate.getMinutes();
+        const seconds = nowDate.getSeconds();
+
+        const displayDate = new Date(year, month, day, hours, minutes, seconds);
+
+        document.getElementById("clockDisplay").innerText = displayDate.toLocaleTimeString();
+    }, 1000);
 }

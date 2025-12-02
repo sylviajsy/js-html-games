@@ -9,28 +9,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Boggle Game</h1>
-    <div id="message-box" class="message-box"></div>
-
-    <div id="board"></div>
-    
-    <div class="btn">
-        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-        <button class="btn btn-primary" id="resetBtn">Reset</button>
-    </div>
-
-    <div id = "instruction">
-        <h2>Rules</h2>
-        <ol>
-            <li>A valid word must be composed by following a sequence of adjacent dice—two dice are adjacent 
-                if they are horizontal, vertical, or diagonal neighbors.</li>
-            <li>A valid word can use each die at most once.</li>
-            <li>A valid word must contain at least 3 letters.</li>
-            <li>A valid word must be in the dictionary (which typically does not contain proper nouns).</li>
-        </ol>
-    </div>
-
     <div class = "container mt-4">
+        <div class = "row">
+            <h1>Boggle Game</h1>
+        </div>
+
+        <div class = "row">
+            <div id="message-box" class="message-box"></div>
+        </div>
+
+        <div class = "row">
+            <div id="board"></div>
+        </div>
+
+        <div class = "row">
+            <div class="btn">
+                <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                <button class="btn btn-primary" id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class = "row">
+            <div id = "instruction">
+                <h2>Rules</h2>
+                <ol>
+                    <li>A valid word must be composed by following a sequence of adjacent dice—two dice are adjacent 
+                        if they are horizontal, vertical, or diagonal neighbors.</li>
+                    <li>A valid word can use each die at most once.</li>
+                    <li>A valid word must contain at least 3 letters.</li>
+                    <li>A valid word must be in the dictionary (which typically does not contain proper nouns).</li>
+                </ol>
+            </div>
+        </div>
+
         <div class="row align-items-start">
             <div class="col-4 text-start">
                 <div>
@@ -54,8 +65,16 @@
                     <span id = "timeValue">3:00</span>
                 </div>
             </div>
-        </div> 
+        </div>
+        
+        <div class = "row">
+            <div id="real-time-clock">
+                <h2>Current Time</h2>
+                <span id="clockDisplay">--:--:--</span>
+            </div>
+        </div>
     </div>
+
     
     <script src="script.js"></script>
 </body>
