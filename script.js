@@ -238,3 +238,23 @@ function resetSelection(){
     GameState.selectedPath = [];
     document.querySelectorAll(".clicked").forEach(btn => btn.classList.remove("clicked"));
 }
+
+// Reset Game
+function resetGame(){
+    GameState.timeLeft = totalGameTime;
+    GameState.score = 0;
+    GameState.isTimerActive = false;
+    GameState.selectedPath = [];
+    GameState.foundWords.clear();
+
+    if (GameState.timerInterval) clearInterval(GameState.timerInterval);
+
+    document.getElementById("timeValue").innerText = "3:00";
+    document.getElementById("scoreValue").innerText = "0";
+    document.getElementById("wordList").innerHTML = "";
+
+    document.getElementById("submitBtn").disabled = false;
+
+    const board = generateBoard();
+    renderBoard(board);
+}
