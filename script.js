@@ -197,19 +197,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const word = GameState.selectedPath.map(p => p.letter).join("");
     // Check if the word in dictionary
-    if (GameState.dictionary.has(word)){
+    if (!GameState.dictionary.has(word)){
         alert("This is not an English word!");
 
-        GameState.selectedPath = [];
-        document.querySelectorAll(".clicked").forEach(btn => btn.classList.remove("clicked"));
+        resetSelection();
         return;
     }
     // Check for repeated word
     if (GameState.foundWords.has(word)) {
         alert("You already found this word!");
 
-        GameState.selectedPath = [];
-        document.querySelectorAll(".clicked").forEach(btn => btn.classList.remove("clicked"));
+        resetSelection();
         return;
     }
 
@@ -221,17 +219,14 @@ document.addEventListener("DOMContentLoaded", () => {
     GameState.foundWords.add(word);
 
     // Reset selected letters
-    GameState.selectedPath = [];
-    document.querySelectorAll(".clicked").forEach(btn => {
-        btn.classList.remove("clicked");
-    });
+    resetSelection();
 
     // Get score
     const score = getScore(word);
     GameState.score += score;
     document.getElementById("scoreValue").innerText = GameState.score;
   });
-  
+
   // Reset Button 
   document.getElementById("resetBtn").addEventListener("click",()=>{
     resetSelection();
