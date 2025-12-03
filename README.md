@@ -1,9 +1,11 @@
-# Boggle Game
+# 🎲 Boggle Game
 
-## Features
+## 📋 Table of Contents
 
-## How to Play
+## ✨ Features
 
-## Installation
+## 🎮 How to Play
 
-## Tech Stack
+## 🚀 Installation
+
+## 🛠 Tech Stack
