@@ -35,8 +35,17 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
 
 ## <a id="how-to-play"></a> 🎮 How to Play
 
+
 ## <a id="installation"></a> 🚀 Installation
 
+
 ## <a id="tech-stack"></a> 🛠 Tech Stack
+* **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+* **Styling Framework**: Bootstrap
+* **Data Structures**: `Set` for dictionary lookups, `Array` for board management, `Object` for Game State.
+* **APIs**:
+    * **Fetch API**: To load the dictionary text file.
+    * **Web Storage API**: To save high scores.
+    * **Date Object**: For timer and real-time clock logic.
 
 ## <a id="project-structure"></a> 📂 Project Structure
