@@ -34,7 +34,15 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
     | 8+ letters | 11 |
 
 ## <a id="how-to-play"></a> 🎮 How to Play
-
+1.  **Start**: Click any letter on the board. The **3-minute timer** starts automatically.
+2.  **Build Words**: Click adjacent letters to form a word.
+    * You can move Horizontally, Vertically, or Diagonally.
+    * You cannot click a die that is already highlighted.
+3.  **Submit**: Click **Submit** to lock in your word.
+    * Valid words appear in the "Word List".
+    * Invalid words trigger an error message.
+4.  **Reset**: Made a mistake? Click **Reset** to clear your current selection.
+5.  **Game Over**: When time hits `0:00`, the board freezes. If you beat your high score, it will be saved!
 
 ## <a id="installation"></a> 🚀 Installation
 **⚠️ Crucial Note:** This project uses `fetch()` to load an external dictionary file. Due to browser security policies (CORS), **you cannot simply open `index.html` by double-clicking it.**
