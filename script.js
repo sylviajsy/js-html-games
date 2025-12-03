@@ -65,7 +65,14 @@ function generateBoard(){
 
     const rolledLetters = dice.map(die => {
         const randomIndex= Math.floor(Math.random() * die.length);
-        return die[randomIndex];
+        let letter = die[randomIndex];
+
+        // Q => Qu
+        if (letter == "Q") {
+            letter = "Qu";
+        }
+        
+        return letter;
     })
 
     // put rolled Letter to 4*4 Board
@@ -113,7 +120,7 @@ function startTimer() {
                     msg += "\nNew High Score! 🎉";
                 }
 
-                const playAgain = confirm(`${msg}\n\nPlay again?`);
+                const playAgain = confirm(`${msg}\nPlay again?`);
 
                 if (playAgain) resetGame();
 
@@ -322,7 +329,7 @@ function isHighestScore(){
         document.getElementById("highestScoreValue").innerText = GameState.highestScore;
         // Local Storage (in the browser) the highest value
         localStorage.setItem('boggleHighestScore', GameState.highestScore);
-        
+
         return true;
     }
 
