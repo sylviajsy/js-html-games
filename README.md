@@ -68,3 +68,10 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
     * **Date Object**: For timer and real-time clock logic.
 
 ## <a id="project-structure"></a> 📂 Project Structure
+```text
+/
+├── README.md             # Documentation
+├── dictionary-yawl.txt   # English word list source
+├── index.html            # Main game interface and layout
+├── script.js             # Core game logic (State, Event Listeners, Validation)
+└── style.css             # Custom styles overrides for Bootstrap
