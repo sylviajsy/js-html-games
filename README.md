@@ -34,6 +34,9 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
     | 8+ letters | 11 |
 
 ## <a id="how-to-play"></a> 🎮 How to Play
+
+
+## <a id="installation"></a> 🚀 Installation
 **⚠️ Crucial Note:** This project uses `fetch()` to load an external dictionary file. Due to browser security policies (CORS), **you cannot simply open `index.html` by double-clicking it.**
 
 ### Prerequisites
@@ -46,10 +49,6 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
 3.  Open the folder in **VS Code**.
 4.  Right-click on `index.html` and select **"Open with Live Server"**.
 5.  The game will launch automatically in your default browser (usually at `http://127.0.0.1:5500/`).
-
-
-## <a id="installation"></a> 🚀 Installation
-
 
 ## <a id="tech-stack"></a> 🛠 Tech Stack
 * **Frontend**: HTML5, CSS3, JavaScript (ES6+)
