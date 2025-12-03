@@ -107,7 +107,7 @@ function startTimer() {
             
             // async function: After timeLeft = 0 + 100ms, pop up playAgain screen
             setTimeout(() => {
-                let msg = "Time's up!\n\nYour Final Score: ${GameState.score}\n\n"
+                let msg = `Time's up!\n\nYour Final Score: ${GameState.score}\n`
 
                 if (isNewRecord){
                     msg += "\nNew High Score! 🎉";
@@ -282,7 +282,7 @@ function showMessage(type, text){
 
     msgBox.innerText = text;
 
-    msgBox.className = "";
+    msgBox.className = "message-box";
 
     if (type ==="success"){
         msgBox.classList.add("success");
@@ -291,7 +291,7 @@ function showMessage(type, text){
     }
 
     setTimeout(() => {
-        msgBox.className = "";
+        msgBox.className = "message-box";
         msgBox.innerText = "";
     }, 2000);
 }
@@ -322,8 +322,7 @@ function isHighestScore(){
         document.getElementById("highestScoreValue").innerText = GameState.highestScore;
         // Local Storage (in the browser) the highest value
         localStorage.setItem('boggleHighestScore', GameState.highestScore);
-
-        showMessage("success","New High Score! 🎉");
+        
         return true;
     }
 
