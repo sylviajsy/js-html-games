@@ -41,7 +41,8 @@ const GameState = {
     board: [],
     selectedPath: [],
     foundWords: new Set(),
-    dictionary: new Set()
+    dictionary: new Set(),
+    highestScore: localStorage.getItem('boggleHighestScore') || 0
 };
 
 // Shuffle the order of 16 dices (Fisher-Yates Shuffle)
@@ -100,17 +101,21 @@ function startTimer() {
 
         if (GameState.timeLeft <=0){
             clearInterval(GameState.timerInterval);
+            const isNewRecord = isHighestScore();
             document.getElementById("submitBtn").disabled = true;
             document.querySelectorAll("#board button").forEach(btn => btn.disabled = true);
             
             // async function: After timeLeft = 0 + 100ms, pop up playAgain screen
             setTimeout(() => {
-                const playAgain = confirm(`Time is up!\nYour Final Score: ${GameState.score}\n\n
-                    Do you want to play again?`);
+                let msg = "Time's up!\n\nYour Final Score: ${GameState.score}\n\n"
 
-                if (playAgain) {
-                    resetGame();
+                if (isNewRecord){
+                    msg += "\nNew High Score! 🎉";
                 }
+
+                const playAgain = confirm(`${msg}\n\nPlay again?`);
+
+                if (playAgain) resetGame();
 
             }, 100);
         }
@@ -197,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBoard(board);
 
   loadDictionary();
+  document.getElementById("highestScoreValue").innerText = GameState.highestScore;
 
   document.getElementById("submitBtn").addEventListener("click", ()=>{
     // A valid word must contain at least 3 letters
@@ -308,4 +314,18 @@ function showCurrentTime(){
 
         document.getElementById("clockDisplay").innerText = displayDate.toLocaleTimeString();
     }, 1000);
+}
+
+function isHighestScore(){
+    if (GameState.score > GameState.highestScore){
+        GameState.highestScore = GameState.score;
+        document.getElementById("highestScoreValue").innerText = GameState.highestScore;
+        // Local Storage (in the browser) the highest value
+        localStorage.setItem('boggleHighestScore', GameState.highestScore);
+
+        showMessage("success","New High Score! 🎉");
+        return true;
+    }
+
+    return false;
 }
