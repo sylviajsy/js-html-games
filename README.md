@@ -12,17 +12,17 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
   
 ## <a id="features"></a> ✨ Features
 * ✔ **Real Boggle Dice**
-  * Uses the official 16 Hasbro Boggle dice for authentic gameplay.
+  * Uses the official 16 Hasbro Boggle dice with **Fisher-Yates Shuffle** algorithm.
 * ✔ **Smart Path Validation**
-  * Ensures players can only select letters that are adjacent (horizontally, vertically, or diagonally) to the last selected tile, and prevents reusing the same die in a single word.
-* ✔ **Dictionary Verification**
-  * Instantly checks submitted words against a built-in English dictionary (`dictionary-yawl.txt`) using efficient Set lookups to reject invalid words.
-* ✔ **3-Minute Timer**
-  * Adds excitement with a countdown timer. The game board automatically locks (disables interaction) when the time hits 0:00.
-* ✔ **Duplicate Prevention**
-  * Tracks found words and alerts the player if they try to submit a word they have already found.
-* ✔ **Highest Score Tracking**
-  * The game tracks the highest score achieved during the session and displays it beside the current score.
+  * **Adjacency Check**: Ensures letters are neighbors (horizontal, vertical, diagonal).
+  * **Non-reuse**: Prevents using the same die twice in a single word.
+  * **Dictionary Check**: Validates words against a loaded English dictionary (`dictionary-yawl.txt`) using efficient **Set** lookups ($O(1)$ complexity).
+* ✔ **Persistent High Score**
+  * Uses `localStorage` to save your highest score locally, keeping the challenge alive even after refreshing the page.
+* ✔ **Real-Time Feedback**
+  * **Timer**: A countdown timer derived from `Date` objects for accuracy.
+  * **Live Clock**: Displays current real-world time.
+  * **Status Messages**: Non-intrusive alerts for errors (e.g., "Not adjacent", "Word not found").
 * ✔ **Automatic Scoring**
   * Scores are based on classic Boggle rules:
     | Word Length | Points |
