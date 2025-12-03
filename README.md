@@ -34,6 +34,18 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
     | 8+ letters | 11 |
 
 ## <a id="how-to-play"></a> 🎮 How to Play
+**⚠️ Crucial Note:** This project uses `fetch()` to load an external dictionary file. Due to browser security policies (CORS), **you cannot simply open `index.html` by double-clicking it.**
+
+### Prerequisites
+* [VS Code](https://code.visualstudio.com/)
+* **Live Server** extension for VS Code.
+
+### Installation Steps
+1.  **Clone or Download** this repository.
+2.  Ensure `index.html`, `script.js`, and `dictionary-yawl.txt` are in the **same folder**.
+3.  Open the folder in **VS Code**.
+4.  Right-click on `index.html` and select **"Open with Live Server"**.
+5.  The game will launch automatically in your default browser (usually at `http://127.0.0.1:5500/`).
 
 
 ## <a id="installation"></a> 🚀 Installation
