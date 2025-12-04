@@ -69,7 +69,7 @@ function generateBoard(){
 
         // Q => Qu
         if (letter == "Q") {
-            letter = "Qu";
+            letter = "QU";
         }
         
         return letter;
@@ -212,13 +212,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("highestScoreValue").innerText = GameState.highestScore;
 
   document.getElementById("submitBtn").addEventListener("click", ()=>{
+    const word = GameState.selectedPath.map(p => p.letter).join("");
     // A valid word must contain at least 3 letters
-    if (GameState.selectedPath.length<3){
+    if (word.length<3){
         showMessage("error", "A valid word must contain at least 3 letters");
         return;
     } 
 
-    const word = GameState.selectedPath.map(p => p.letter).join("");
     // Check if the word in dictionary
     if (!GameState.dictionary.has(word)){
         showMessage("error", "This is not an English word!");
