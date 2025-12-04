@@ -328,7 +328,7 @@ function isHighestScore(){
         GameState.highestScore = GameState.score;
         document.getElementById("highestScoreValue").innerText = GameState.highestScore;
         // Local Storage (in the browser) the highest value
-        localStorage.setItem('boggleHighestScore', GameState.highestScore);
+        localStorage.setItem("boggleHighestScore", GameState.highestScore);
 
         return true;
     }
