@@ -26,8 +26,8 @@ async function loadDictionary(){
         const words = text.split('\n').map(w => w.trim().toUpperCase());
         GameState.dictionary = new Set(words);
         console.log("Dictionary successfully loaded with ${GameState.dictionary.size} words");
-    }catch(error){
-    console.error("Dictionary fail to load", error);
+    } catch (error) {
+        console.error("Dictionary fail to load", error);
     }
 }
 
