@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boggle Game</title>
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
-     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class = "container mt-4">
         <div class = "row">
-            <h1>Boggle Game</h1>
+            <div class = "col-12">
+                <h1>Boggle Game</h1>
+            </div>
         </div>
 
         <div class = "row">
@@ -21,33 +22,42 @@
         </div>
 
         <div class = "row">
-            <div id="board"></div>
-        </div>
-
-        <div class = "row">
-            <div class="btn-container">
-                <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-                <button class="btn btn-primary" id="resetBtn">Reset</button>
+            <div class = "col-12">
+                <div id="board"></div>
             </div>
         </div>
 
         <div class = "row">
-            <div id = "instruction">
-                <h2>Rules</h2>
-                <ol>
-                    <li>A valid word must be composed by following a sequence of adjacent dice—two dice are adjacent 
-                        if they are horizontal, vertical, or diagonal neighbors.</li>
-                    <li>A valid word can use each die at most once.</li>
-                    <li>A valid word must contain at least 3 letters.</li>
-                    <li>A valid word must be in the dictionary (which typically does not contain proper nouns).</li>
-                </ol>
+            <div class = "col-12">
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                    <button class="btn btn-primary" id="resetBtn">Reset</button>
+                </div>
             </div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-12">
+                <div id = "instruction">
+                    <h2>Rules</h2>
+                        <ol>
+                            <li>A valid word must be composed by following a sequence of adjacent dice—two dice are adjacent 
+                                if they are horizontal, vertical, or diagonal neighbors.</li>
+                            <li>A valid word can use each die at most once.</li>
+                            <li>A valid word must contain at least 3 letters.</li>
+                            <li>A valid word must be in the dictionary (which typically does not contain proper nouns).</li>
+                        </ol>
+            </div>
+            </div>
+            
         </div>
         
         <div class = "row">
-            <div id = "highestScore">
-                <h2>Higest Score</h2>
-                <span id = "highestScoreValue">0</span>
+            <div class = "col-12">
+                <div id = "highestScore">
+                    <h2>Higest Score</h2>
+                    <span id = "highestScoreValue">0</span>
+                </div>
             </div>
         </div>
 
@@ -77,10 +87,13 @@
         </div>
         
         <div class = "row">
-            <div id="real-time-clock">
-                <h2>Current Time</h2>
-                <span id="clockDisplay">--:--:--</span>
+            <div class = "col-12">
+                <div id="real-time-clock">
+                    <h2>Current Time</h2>
+                    <span id="clockDisplay">--:--:--</span>
+                </div>
             </div>
+            
         </div>
     </div>
 
