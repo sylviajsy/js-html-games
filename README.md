@@ -3,6 +3,8 @@ A browser-based implementation of the classic Boggle word game, built with HTML,
 
 Players form valid English words by selecting adjacent letters on a 4×4 board generated using the official Hasbro Boggle dice. The game includes scoring, adjacency checking, word tracking, and a countdown timer.
 
+You can play the game <a href="https://sylviajsy.github.io/js-html-games/">here</a>
+
 ## 📋 Table of Contents
 - [Features](#features)
 - [How to Play](#how-to-play)
