@@ -110,6 +110,7 @@ function startTimer() {
             clearInterval(GameState.timerInterval);
             const isNewRecord = isHighestScore();
             document.getElementById("submitBtn").disabled = true;
+            document.getElementById("resetBtn").disabled = true;
             document.querySelectorAll("#board button").forEach(btn => btn.disabled = true);
             
             // async function: After timeLeft = 0 + 100ms, pop up playAgain screen
@@ -279,6 +280,7 @@ function resetGame(){
     document.getElementById("wordList").innerHTML = "";
 
     document.getElementById("submitBtn").disabled = false;
+    document.getElementById("resetBtn").disabled = false;
 
     const board = generateBoard();
     renderBoard(board);
