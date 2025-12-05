@@ -52,7 +52,7 @@ Players form valid English words by selecting adjacent letters on a 4×4 board g
 * **Live Server** extension for VS Code.
 
 ### Installation Steps
-1.  **Clone or Download** this repository.
+1.  **Clone or Download** this repository. `git clone https://github.com/sylviajsy/js-html-games.git`
 2.  Ensure `index.html`, `script.js`, and `dictionary-yawl.txt` are in the **same folder**.
 3.  Open the folder in **VS Code**.
 4.  Right-click on `index.html` and select **"Open with Live Server"**.
